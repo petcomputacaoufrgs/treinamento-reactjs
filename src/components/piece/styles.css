@@ -1,0 +1,13 @@
+.piece {
+  background-color: whitesmoke;
+  height: 80px;
+  width: 80px;
+  border-radius: 3px;
+  background-image: url('../../assets/background.png');
+  background-size: 300px;
+}
+
+.piece__front {
+    height: inherit;
+    width: inherit;
+}
