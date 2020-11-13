@@ -1,21 +1,41 @@
 import React from 'react'
 import './App.css'
-import { ReactComponent as Orca } from './assets/001-orca.svg'
+import { ReactComponent as Diplodocus } from './assets/001-diplodocus.svg'
 import { ReactComponent as Stegosaurus } from './assets/002-stegosaurus.svg'
-import { ReactComponent as Dragao } from './assets/003-dragao.svg'
-import { ReactComponent as Hidra } from './assets/004-hidra.svg'
-import { ReactComponent as Coruja } from './assets/005-coruja.svg'
-import { ReactComponent as Lobo } from './assets/006-lobo.svg'
-import { ReactComponent as Gatinha } from './assets/007-gatinha.svg'
-import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
+import { ReactComponent as Dinosaur } from './assets/003-dinosaur.svg'
+import { ReactComponent as Triceratops } from './assets/004-triceratops.svg'
+import { ReactComponent as Diplodocus2 } from './assets/005-diplodocus-1.svg'
+import { ReactComponent as Stegosaurus2 } from './assets/006-stegosaurus-1.svg'
+import { ReactComponent as Stegosaurus3 } from './assets/007-stegosaurus.svg'
+import { ReactComponent as Diplodocus3 } from './assets/008-diplodocus-2.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
 
+
+function shuffle(array:BoardPiece[]) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 const App: React.FC = () => {
-  const board = [
+  const board = shuffle([
     ...getPieces(),
     ...getPieces()
-  ]
+  ])
 
   return (
     <div className="App">
@@ -31,7 +51,7 @@ const App: React.FC = () => {
 const getPieces = (): BoardPiece[] => {
   return [
     {
-      image: Orca,
+      image: Diplodocus,
       turned: false
     },
     {
@@ -39,30 +59,31 @@ const getPieces = (): BoardPiece[] => {
       turned: false
     },
     {
-      image: Dragao,
+      image: Dinosaur,
       turned: false
     },
     {
-      image: Hidra,
+      image: Triceratops,
       turned: false
     },
     {
-      image: Coruja,
+      image: Diplodocus2,
       turned: false
     },
     {
-      image: Lobo,
+      image: Stegosaurus2,
       turned: false
     },
     {
-      image: Gatinha,
+      image: Stegosaurus3,
       turned: false
     },
     {
-      image: Raposinha,
+      image: Diplodocus3,
       turned: false
     }
   ]
 }
 
 export default App
+
