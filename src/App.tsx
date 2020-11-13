@@ -28,41 +28,9 @@ const App: React.FC = () => {
   );
 }
 
-const getPieces = (): BoardPiece[] => {
-  return [
-    {
-      image: Orca,
-      turned: false
-    },
-    {
-      image: Stegosaurus,
-      turned: false
-    },
-    {
-      image: Dragao,
-      turned: false
-    },
-    {
-      image: Hidra,
-      turned: false
-    },
-    {
-      image: Coruja,
-      turned: false
-    },
-    {
-      image: Lobo,
-      turned: false
-    },
-    {
-      image: Gatinha,
-      turned: false
-    },
-    {
-      image: Raposinha,
-      turned: false
-    }
-  ]
-}
+
+
+const getPieces = () => [Orca, Stegosaurus, Dragao, Hidra, Coruja, Lobo, Gatinha, Raposinha]
+
 
 export default App

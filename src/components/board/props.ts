@@ -1,5 +1,3 @@
-import BoardPiece from "../types/BoardPiece"
-
 export default interface BoardProps {
-    pieceList: BoardPiece[]
+    pieceList: React.FunctionComponent<React.SVGProps<SVGSVGElement>>[]
 }

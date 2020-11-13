@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
 import BoardProps from './props'
-import Piece from '../piece'
 import './styles.css'
 
 const Board: React.FC<BoardProps> = ({
     pieceList
 }) => {
-    const [pieceState, setPieceState] = useState(pieceList)
+
+    const [pieceStates, setPieceStates] = useState<number[]>([])
 
     const handleOnClick = (index: number) => {
-        pieceState[index].turned = !pieceState[index].turned
-        setPieceState([...pieceState])
-    }
+        pieceStates.length > 1 
+        ? setPieceStates([pieceStates[1], index]) 
+        : setPieceStates([pieceStates[0], index])
+    }  
 
     return (
         <div className="Board">
-            {pieceState.map((piece, index) => (
-                <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
+            {pieceList.map((Image, index) => (
+                <div className="piece" onClick={() => handleOnClick(index)}>
+                {pieceStates.some(e => e === index) ? 
+                    <Image className="piece__front" /> : 
+                    <div className="piece__front" />
+                }
+                </div>
             ))}
         </div>
     )
