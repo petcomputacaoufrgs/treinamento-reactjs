@@ -10,7 +10,7 @@ const Board: React.FC<BoardProps> = ({
 
     const handleOnClick = (index: number) => {
         pieceStates.length > 1 
-        ? setPieceStates([pieceStates[1], index]) 
+        ? setPieceStates([index]) 
         : setPieceStates([pieceStates[0], index])
     }  
 
@@ -18,9 +18,9 @@ const Board: React.FC<BoardProps> = ({
         <div className="Board">
             {pieceList.map((Image, index) => (
                 <div className="piece" onClick={() => handleOnClick(index)}>
-                {pieceStates.some(e => e === index) ? 
-                    <Image className="piece__front" /> : 
-                    <div className="piece__front" />
+                {pieceStates.some(piece => piece === index) ? 
+                    <Image key={index} className="piece__front" /> : 
+                    <div key={index} className="piece__front" />
                 }
                 </div>
             ))}

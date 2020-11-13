@@ -9,9 +9,11 @@ import { ReactComponent as Lobo } from './assets/006-lobo.svg'
 import { ReactComponent as Gatinha } from './assets/007-gatinha.svg'
 import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
 import Board from './components/board'
-import BoardPiece from './components/types/BoardPiece'
 
 const App: React.FC = () => {
+
+  const getPieces = () => [Orca, Stegosaurus, Dragao, Hidra, Coruja, Lobo, Gatinha, Raposinha]
+
   const board = [
     ...getPieces(),
     ...getPieces()
@@ -27,10 +29,5 @@ const App: React.FC = () => {
     </div>
   );
 }
-
-
-
-const getPieces = () => [Orca, Stegosaurus, Dragao, Hidra, Coruja, Lobo, Gatinha, Raposinha]
-
 
 export default App
