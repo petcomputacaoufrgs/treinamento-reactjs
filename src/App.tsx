@@ -52,35 +52,43 @@ const getPieces = (): BoardPiece[] => {
   return [
     {
       image: Diplodocus,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Stegosaurus,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Dinosaur,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Triceratops,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Diplodocus2,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Stegosaurus2,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Stegosaurus3,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
       image: Diplodocus3,
-      turned: false
+      turned: false,
+      visible: true
     }
   ]
 }

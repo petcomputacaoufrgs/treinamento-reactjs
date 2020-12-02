@@ -6,19 +6,15 @@ const Piece: React.FC<PieceProps> = ({
     piece,
     onClick
 }) => {
-    const [isTurned, setIsTurned] = useState(piece.turned)
-
     const Image = piece.image
-
-    useEffect(() => {
-        setIsTurned(piece.turned)
-    }, [piece.turned])
     
     return (
         <div className="piece" onClick={onClick}>
-            { isTurned 
+            { piece.turned && piece.visible
                 ? <Image className="piece piece__front" /> 
-                : <div className="piece piece__back" />
+                : piece.visible
+                    ? <div className="piece piece__back" />
+                    : <div className="piece__invisible_piece" />
             }
         </div>
     )

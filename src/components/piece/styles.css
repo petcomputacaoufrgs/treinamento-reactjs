@@ -1,5 +1,4 @@
 .piece {
-  background-color: whitesmoke;
   height: 80px;
   width: 80px;
   border-radius: 3px;
@@ -12,4 +11,8 @@
 
 .piece__back {
     background-image: url('../../assets/back_card.png');
+}
+
+.piece__invisible_piece {
+  background-color: transparent;
 }
