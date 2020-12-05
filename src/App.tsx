@@ -17,13 +17,21 @@ const App: React.FC = () => {
     ...getPieces()
   ]
 
+  function shuffleArray<T>(array: T[]): T[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Joguinho da Memória</h1>
         <p>Jogo da memória para uma pessoa</p>
       </header>
-      <Board pieceList={board} />
+      <Board pieceList={shuffleArray(board)} />
     </div>
   );
 }
