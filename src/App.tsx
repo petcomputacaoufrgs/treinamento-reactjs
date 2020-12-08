@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
-import { ReactComponent as Orca } from './assets/001-orca.svg'
-import { ReactComponent as Stegosaurus } from './assets/002-stegosaurus.svg'
-import { ReactComponent as Dragao } from './assets/003-dragao.svg'
-import { ReactComponent as Hidra } from './assets/004-hidra.svg'
-import { ReactComponent as Coruja } from './assets/005-coruja.svg'
-import { ReactComponent as Lobo } from './assets/006-lobo.svg'
-import { ReactComponent as Gatinha } from './assets/007-gatinha.svg'
-import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
+import { ReactComponent as Angel } from './assets/angel.svg'
+import { ReactComponent as Astronaut } from './assets/astronaut.svg'
+import { ReactComponent as Dancer } from './assets/dancer.svg'
+import { ReactComponent as Fighter } from './assets/fighter.svg'
+import { ReactComponent as Flower } from './assets/flower.svg'
+import { ReactComponent as Pirate } from './assets/pirate.svg'
+import { ReactComponent as Programmer } from './assets/programmer.svg'
+import { ReactComponent as Super } from './assets/super.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
 
@@ -33,51 +33,51 @@ const App: React.FC = () => {
 const getPieces = (): BoardPiece[] => {
   return [
     {
-      image: Orca,
+      image: Angel,
       turned: false,
-      name: "Orca",
+      name: "Angel",
       erased: false
     },
     {
-      image: Stegosaurus,
+      image: Astronaut,
       turned: false,
-      name: "Stegosaurus",
+      name: "Astronaut",
       erased: false
     },
     {
-      image: Dragao,
+      image: Dancer,
       turned: false,
-      name: "Dragao",
+      name: "Dancer",
       erased: false
     },
     {
-      image: Hidra,
+      image: Fighter,
       turned: false,
-      name: "Hidra",
+      name: "Fighter",
       erased: false
     },
     {
-      image: Coruja,
+      image: Flower,
       turned: false,
-      name: "Coruja",
+      name: "Flower",
       erased: false
     },
     {
-      image: Lobo,
+      image: Pirate,
       turned: false,
-      name: "Lobo",
+      name: "Pirate",
       erased: false
     },
     {
-      image: Gatinha,
+      image: Programmer,
       turned: false,
-      name: "Gatinha",
+      name: "Programmer",
       erased: false
     },
     {
-      image: Raposinha,
+      image: Super,
       turned: false,
-      name: "Raposinha",
+      name: "Super",
       erased: false
     }
   ]

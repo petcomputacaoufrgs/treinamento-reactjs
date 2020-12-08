@@ -12,8 +12,8 @@ const Board: React.FC<BoardProps> = ({
 
     const [points, setPoints] = useState(0);
 
-    useEffect(() => { //nao sei onde usa o useffect aqui nesse codigo e fiz sem
-        console.log(points)
+    useEffect(() => {
+        document.title = `Voce tem ${points} pontos`
       }, [points]);
 
     const handleOnClick = (index: number) => {
