@@ -8,6 +8,12 @@
 }
 
 .piece__front {
-    height: inherit;
-    width: inherit;
+  height: inherit;
+  width: inherit;
+}
+
+.removed-piece {
+  height: 80px;
+  width: 80px;
+  border-radius: 3px;
 }

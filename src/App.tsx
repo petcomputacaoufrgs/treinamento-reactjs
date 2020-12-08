@@ -34,37 +34,55 @@ const getPieces = (): BoardPiece[] => {
   return [
     {
       image: Orca,
-      turned: false
+      turned: false,
+      name: "Orca",
+      erased: false
     },
     {
       image: Stegosaurus,
-      turned: false
+      turned: false,
+      name: "Stegosaurus",
+      erased: false
     },
     {
       image: Dragao,
-      turned: false
+      turned: false,
+      name: "Dragao",
+      erased: false
     },
     {
       image: Hidra,
-      turned: false
+      turned: false,
+      name: "Hidra",
+      erased: false
     },
     {
       image: Coruja,
-      turned: false
+      turned: false,
+      name: "Coruja",
+      erased: false
     },
     {
       image: Lobo,
-      turned: false
+      turned: false,
+      name: "Lobo",
+      erased: false
     },
     {
       image: Gatinha,
-      turned: false
+      turned: false,
+      name: "Gatinha",
+      erased: false
     },
     {
       image: Raposinha,
-      turned: false
+      turned: false,
+      name: "Raposinha",
+      erased: false
     }
   ]
 }
+
+
 
 export default App
