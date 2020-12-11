@@ -63,7 +63,7 @@ const Board: React.FC<BoardProps> = ({
     }
 
     return (
-        <div className="Board">
+        <div className="board">
             {pieceState.map((piece, index) => (
                 <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
             ))}
