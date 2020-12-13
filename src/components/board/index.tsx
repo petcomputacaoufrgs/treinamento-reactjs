@@ -14,55 +14,69 @@ const Board: React.FC<BoardProps> = ({
 
     const [canClick, setCanClick] = useState(true);
 
+    const [didWin, setDidWin] = useState(false);
+
+
     useEffect(() => {
         document.title = `Voce tem ${points} pontos`
     }, [points]);
 
     const handleOnClick = (index: number) => {
-        if (!canClick)
-            return
-        console.log("teste")
-        pieceState[index].turned = !pieceState[index].turned
-        if (selectedIndex !== -1) {
-            console.log("tem duas pecas clicadas")
-            if (pieceState[index].name === pieceState[selectedIndex].name) {
-                console.log("duas pecas iguais")
-                setCanClick(false)
-                setTimeout(() => {
-                    setPoints(points + 10)
-                    pieceState[index].erased = true
-                    pieceState[selectedIndex].erased = true
-                    setPieceState([...pieceState])
-                    setCanClick(true)
-                }, 1000);
-            }
-            else {
-                console.log("duas pecas diferentes")
-                setCanClick(false)
-                setTimeout(() => {
-                    pieceState[selectedIndex].turned = false
-                    pieceState[index].turned = false
-                    setPieceState([...pieceState])
-                    setCanClick(true)
-                }, 1000);
-            }
+        if (canClick) {
+            console.log("teste")
+            pieceState[index].turned = !pieceState[index].turned
+            if (selectedIndex !== -1) {
+                console.log("tem duas pecas clicadas")
+                if (pieceState[index].name === pieceState[selectedIndex].name) {
+                    console.log("duas pecas iguais")
+                    setCanClick(false)
+                    setTimeout(() => {
+                        setPoints(points + 10)
+                        pieceState[index].erased = true
+                        pieceState[selectedIndex].erased = true
+                        setPieceState([...pieceState])
+                        setCanClick(true)
+                        let pieceErased = true;
+                        for (let i = 0; i < pieceState.length; i++) {
+                            if (!pieceState[i].erased)
+                                pieceErased = false;
+                        }
+                        if(pieceErased)
+                            setDidWin(true);
+                    }, 1000);
+                }
+                else {
+                    console.log("duas pecas diferentes")
+                    setCanClick(false)
+                    setTimeout(() => {
+                        pieceState[selectedIndex].turned = false
+                        pieceState[index].turned = false
+                        setPieceState([...pieceState])
+                        setCanClick(true)
+                    }, 1000);
+                }
 
-            setSelectedIndex(-1)
+                setSelectedIndex(-1)
+            }
+            else
+                setSelectedIndex(index)
+
+            setPieceState([...pieceState])
         }
-        else
-            setSelectedIndex(index)
-
-        setPieceState([...pieceState])
     }
 
 
     return (
         <div><h1>{points}</h1>
-            <div className="Board">
+            {
+                didWin 
+                ? <h1>Você Ganhou!</h1>
+                : <div className="Board">
                 {pieceState.map((piece, index) => (
                     <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
                 ))}
             </div>
+            }
         </div>
     )
 }
