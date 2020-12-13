@@ -23,12 +23,9 @@ const Board: React.FC<BoardProps> = ({
 
     const handleOnClick = (index: number) => {
         if (canClick) {
-            console.log("teste")
             pieceState[index].turned = !pieceState[index].turned
             if (selectedIndex !== -1) {
-                console.log("tem duas pecas clicadas")
-                if (pieceState[index].name === pieceState[selectedIndex].name) {
-                    console.log("duas pecas iguais")
+                if (pieceState[index].name === pieceState[selectedIndex].name) { 
                     setCanClick(false)
                     setTimeout(() => {
                         setPoints(points + 10)
@@ -46,7 +43,6 @@ const Board: React.FC<BoardProps> = ({
                     }, 1000);
                 }
                 else {
-                    console.log("duas pecas diferentes")
                     setCanClick(false)
                     setTimeout(() => {
                         pieceState[selectedIndex].turned = false
