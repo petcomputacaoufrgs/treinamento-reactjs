@@ -12,31 +12,39 @@ const Board: React.FC<BoardProps> = ({
 
     const [points, setPoints] = useState(0);
 
+    const [canClick, setCanClick] = useState(true);
+
     useEffect(() => {
         document.title = `Voce tem ${points} pontos`
-      }, [points]);
+    }, [points]);
 
     const handleOnClick = (index: number) => {
+        if (!canClick)
+            return
         console.log("teste")
         pieceState[index].turned = !pieceState[index].turned
         if (selectedIndex !== -1) {
             console.log("tem duas pecas clicadas")
             if (pieceState[index].name === pieceState[selectedIndex].name) {
                 console.log("duas pecas iguais")
+                setCanClick(false)
                 setTimeout(() => {
                     setPoints(points + 10)
                     pieceState[index].erased = true
                     pieceState[selectedIndex].erased = true
                     setPieceState([...pieceState])
-                }, 500);
+                    setCanClick(true)
+                }, 1000);
             }
             else {
                 console.log("duas pecas diferentes")
+                setCanClick(false)
                 setTimeout(() => {
                     pieceState[selectedIndex].turned = false
                     pieceState[index].turned = false
                     setPieceState([...pieceState])
-                }, 500);
+                    setCanClick(true)
+                }, 1000);
             }
 
             setSelectedIndex(-1)
@@ -50,11 +58,11 @@ const Board: React.FC<BoardProps> = ({
 
     return (
         <div><h1>{points}</h1>
-        <div className="Board">
-            {pieceState.map((piece, index) => (
-                <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
-            ))}
-        </div>
+            <div className="Board">
+                {pieceState.map((piece, index) => (
+                    <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
+                ))}
+            </div>
         </div>
     )
 }
