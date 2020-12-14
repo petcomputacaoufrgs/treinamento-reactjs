@@ -5,6 +5,24 @@
   border-radius: 3px;
   background-image: url('../../assets/background.png');
   background-size: 100px;
+  backface-visibility: hidden;
+  transition: transform 1s ;
+}
+
+.piece-back {
+  background-color: whitesmoke;
+  height: 80px;
+  width: 80px;
+  border-radius: 3px;
+  background-image: url('../../assets/background.png');
+  background-size: 100px;
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform 1s ;
+}
+
+.rotated {
+  transform: rotateY(180deg);
 }
 
 .piece__front {

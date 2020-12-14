@@ -10,11 +10,13 @@ const Piece: React.FC<PieceProps> = ({
 
     return piece.erased
         ? <div className="removed-piece"></div>
-        : <div className="piece" onClick={onClick}>
-            {piece.turned
-                ? <Image className="piece__front" />
-                : <div className="piece__front" />
-            }
+        : <div>
+            <div className={piece.turned ? "piece-back" : "rotated piece-back"}>
+                <Image className="piece__front" />
+            </div>
+            <div className={piece.turned ? "rotated piece" : "piece"} onClick={onClick}>
+                <div className="piece__front" />
+            </div>
         </div>
 }
 
