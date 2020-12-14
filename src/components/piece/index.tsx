@@ -1,6 +1,6 @@
-import React from 'react'
-import './styles.css'
+import React, { useState, useEffect } from 'react'
 import PieceProps from './props'
+import './styles.css'
 
 const Piece: React.FC<PieceProps> = ({
     piece,
@@ -19,3 +19,10 @@ const Piece: React.FC<PieceProps> = ({
 }
 
 export default Piece
+
+/*
+
+useEffect(() => {
+    setIsTurned(piece.turned)
+}, [piece.turned])
+*/
