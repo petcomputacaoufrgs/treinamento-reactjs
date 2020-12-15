@@ -1,33 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PieceProps from './props'
 import './styles.css'
 
 const Piece: React.FC<PieceProps> = ({
     piece,
+    correctAnswer,
     onClick
 }) => {
     const Image = piece.image
-    const [isTurned, setIsTurned] = useState(piece.turned)
+
+    const getPieceCardClass = (): string => {
+        const baseClass = 'piece__card'
+
+        if (piece.turned) {
+            if (correctAnswer !== undefined) {
+                if (correctAnswer) {
+                    return baseClass + ' score'
+                }
+    
+                return baseClass + ' flip_back'
+            }
+    
+            return baseClass + ' flip'
+        }
         
-    useEffect(() => {
-        setIsTurned(piece.turned)
-    }, [piece.turned])
+
+        return baseClass
+    } 
 
     return (
-        <div className="piece" onClick={onClick}>
-            { isTurned
-                ? <Image className="piece__front" /> 
-                : <div className="piece__front" />
+        <div className='piece'>
+            {piece.removed ? 
+                <div className='piece__removed'/>
+                : 
+                <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
+                    <div className='piece__back'/>
+                    <Image className='piece__front' /> 
+                </div>
             }
         </div>
     )
 }
 
 export default Piece
-
-/*
-
-useEffect(() => {
-    setIsTurned(piece.turned)
-}, [piece.turned])
-*/

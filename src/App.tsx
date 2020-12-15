@@ -26,10 +26,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app__header">
         <h1>Joguinho da Memória</h1>
-        <p>Jogo da memória para uma pessoa</p>
+        <h2>Jogo da memória para uma pessoa</h2>
       </header>
       <Board pieceList={shuffleArray(board)} />
     </div>
@@ -39,34 +39,42 @@ const App: React.FC = () => {
 const getPieces = (): BoardPiece[] => {
   return [
     {
+      id: 1,
       image: Orca,
       turned: false
     },
     {
+      id: 2,
       image: Stegosaurus,
       turned: false
     },
     {
+      id: 3,
       image: Dragao,
       turned: false
     },
     {
+      id: 4,
       image: Hidra,
       turned: false
     },
     {
+      id: 5,
       image: Coruja,
       turned: false
     },
     {
+      id: 6,
       image: Lobo,
       turned: false
     },
     {
+      id: 7,
       image: Gatinha,
       turned: false
     },
     {
+      id: 8,
       image: Raposinha,
       turned: false
     }

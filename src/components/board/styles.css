@@ -1,5 +1,15 @@
 .board {
+  padding: 0 1rem 0 1rem;
+}
+
+.board__pieces {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 0.7rem;
+}
+
+.board__header p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }

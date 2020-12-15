@@ -1,4 +1,4 @@
-.App {
+.app {
   background-color: #282c34;
   text-align: center;
   height: 100vh;
@@ -10,8 +10,10 @@
   color: white;
 }
 
-.Board {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 12px;
+.app__header h1 {
+  font-size: 1.5rem;
+}
+
+.app__header h2 {
+  font-size: 1.2rem;
 }
