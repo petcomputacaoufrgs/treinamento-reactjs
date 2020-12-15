@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import PieceProps from './props'
 import './styles.css'
 
 const Piece: React.FC<PieceProps> = ({
@@ -6,27 +7,17 @@ const Piece: React.FC<PieceProps> = ({
     onClick
 }) => {
     const Image = piece.image
-    const [isTurned, setIsTurned] = useState(piece.turned)
-        
-    useEffect(() => {
-        setIsTurned(piece.turned)
-    }, [piece.turned])
 
     return (
         <div className="piece" onClick={onClick}>
-            { piece.turned 
-                ? <Image className="piece__front" /> 
-                : <div className="piece__front" />
-            }
+        { piece.turned && piece.visible
+            ? <Image className="piece piece__front" /> 
+            : piece.visible
+                ? <div className="piece piece__back" />
+                : <div className="piece__invisible_piece" />
+        }
         </div>
     )
 }
 
 export default Piece
-
-/*
-
-useEffect(() => {
-    setIsTurned(piece.turned)
-}, [piece.turned])
-*/
