@@ -1,49 +1,23 @@
 import React from 'react'
 import './App.css'
-import { ReactComponent as Diplodocus } from './assets/001-diplodocus.svg'
-import { ReactComponent as Stegosaurus } from './assets/002-stegosaurus.svg'
-import { ReactComponent as Dinosaur } from './assets/003-dinosaur.svg'
-import { ReactComponent as Triceratops } from './assets/004-triceratops.svg'
-import { ReactComponent as Diplodocus2 } from './assets/005-diplodocus-1.svg'
-import { ReactComponent as Stegosaurus2 } from './assets/006-stegosaurus-1.svg'
-import { ReactComponent as Stegosaurus3 } from './assets/007-stegosaurus.svg'
-import { ReactComponent as Diplodocus3 } from './assets/008-diplodocus-2.svg'
+import { ReactComponent as Angel } from './assets/angel.svg'
+import { ReactComponent as Astronaut } from './assets/astronaut.svg'
+import { ReactComponent as Dancer } from './assets/dancer.svg'
+import { ReactComponent as Fighter } from './assets/fighter.svg'
+import { ReactComponent as Flower } from './assets/flower.svg'
+import { ReactComponent as Pirate } from './assets/pirate.svg'
+import { ReactComponent as Programmer } from './assets/programmer.svg'
+import { ReactComponent as Super } from './assets/super.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
 
-
-function shuffle(array:BoardPiece[]) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-
 const App: React.FC = () => {
-  const board = shuffle([
+  const board = [
     ...getPieces(),
     ...getPieces()
-  ])
+  ]
 
-  function shuffleArray<T>(array: T[]): T[] {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array
-  }
+  const boardRandom = board.sort(() => Math.random() - 0.5)
 
   return (
     <div className="App">
@@ -51,7 +25,7 @@ const App: React.FC = () => {
         <h1>Joguinho da Memória</h1>
         <p>Jogo da memória para uma pessoa</p>
       </header>
-      <Board pieceList={shuffleArray(board)} />
+      <Board pieceList={boardRandom} />
     </div>
   );
 }
@@ -59,47 +33,56 @@ const App: React.FC = () => {
 const getPieces = (): BoardPiece[] => {
   return [
     {
-      image: Diplodocus,
+      image: Angel,
       turned: false,
-      visible: true
+      name: "Angel",
+      erased: false
     },
     {
-      image: Stegosaurus,
+      image: Astronaut,
       turned: false,
-      visible: true
+      name: "Astronaut",
+      erased: false
     },
     {
-      image: Dinosaur,
+      image: Dancer,
       turned: false,
-      visible: true
+      name: "Dancer",
+      erased: false
     },
     {
-      image: Triceratops,
+      image: Fighter,
       turned: false,
-      visible: true
+      name: "Fighter",
+      erased: false
     },
     {
-      image: Diplodocus2,
+      image: Flower,
       turned: false,
-      visible: true
+      name: "Flower",
+      erased: false
     },
     {
-      image: Stegosaurus2,
+      image: Pirate,
       turned: false,
-      visible: true
+      name: "Pirate",
+      erased: false
     },
     {
-      image: Stegosaurus3,
+      image: Programmer,
       turned: false,
-      visible: true
+      name: "Programmer",
+      erased: false
     },
     {
-      image: Diplodocus3,
+      image: Super,
       turned: false,
-      visible: true
+      name: "Super",
+      erased: false
     }
   ]
 }
 
-export default App
 
+
+export default App

@@ -1,18 +1,19 @@
 .piece {
+  background-color: whitesmoke;
   height: 80px;
   width: 80px;
   border-radius: 3px;
-  background-size: 80px;
+  background-image: url('../../assets/background.png');
+  background-size: 100px;
 }
 
 .piece__front {
-    background-image: url('../../assets/front_card.png');
+  height: inherit;
+  width: inherit;
 }
 
-.piece__back {
-    background-image: url('../../assets/back_card.png');
-}
-
-.piece__invisible_piece {
-  background-color: transparent;
+.removed-piece {
+  height: 80px;
+  width: 80px;
+  border-radius: 3px;
 }

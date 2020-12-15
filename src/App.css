@@ -1,5 +1,5 @@
 .App {
-  background-color: #9ACAE7;
+  background-color: #994a6b;
   text-align: center;
   height: 100vh;
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #f0d6d1;
 }
 
 .Board {

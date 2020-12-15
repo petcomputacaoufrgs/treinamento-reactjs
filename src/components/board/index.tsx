@@ -3,70 +3,58 @@ import BoardProps from './props'
 import Piece from '../piece'
 import './styles.css'
 
-
-function sleep(ms:number) {
-    return new Promise<void>(resolve => setTimeout(resolve, ms));
-}
-
 const Board: React.FC<BoardProps> = ({
     pieceList
 }) => {
     const [pieceState, setPieceState] = useState(pieceList)
-    const [turnedPieceIndex, setTurnedPieceIndex] = useState<number>(-1)
-    const [blocked, setBlocked] = useState<boolean>(false)
-    const [score, setScore] = useState(0)
+
+    const [selectedIndex, setSelectedIndex] = useState(-1)
+
+    const [points, setPoints] = useState(0);
 
     useEffect(() => {
-        document.title = "Pontos: " + score
-    }, [score])
-    
-    const handleOnClick = async(index: number) => {
-        if(!pieceState[index].turned && !blocked) {
-            pieceState[index].turned = true
+        document.title = `Voce tem ${points} pontos`
+      }, [points]);
 
-            if(turnedPieceIndex === -1) {
-                setTurnedPieceIndex(index)
-            } else {
-                if (pieceState[turnedPieceIndex].image === pieceState[index].image) {
-                    setScore(score + 1)
-
-                    console.log(score)
-
-                    setBlocked(true)
-
-                    await sleep(1500)
-
-                    setBlocked(false)
-
-                    pieceState[turnedPieceIndex].visible = false
-                    pieceState[index].visible = false
-
-                } else {
+    const handleOnClick = (index: number) => {
+        console.log("teste")
+        pieceState[index].turned = !pieceState[index].turned
+        if (selectedIndex !== -1) {
+            console.log("tem duas pecas clicadas")
+            if (pieceState[index].name === pieceState[selectedIndex].name) {
+                console.log("duas pecas iguais")
+                setTimeout(() => {
+                    setPoints(points + 10)
+                    pieceState[index].erased = true
+                    pieceState[selectedIndex].erased = true
                     setPieceState([...pieceState])
-                    
-                    setBlocked(true)
-
-                    await sleep(1500)
-
-                    setBlocked(false)
-
-                    // desvirar as peças
+                }, 500);
+            }
+            else {
+                console.log("duas pecas diferentes")
+                setTimeout(() => {
+                    pieceState[selectedIndex].turned = false
                     pieceState[index].turned = false
-                    pieceState[turnedPieceIndex].turned = false
-                }
-
-                setTurnedPieceIndex(-1)
+                    setPieceState([...pieceState])
+                }, 500);
             }
 
-            setPieceState([...pieceState])
+            setSelectedIndex(-1)
         }
+        else
+            setSelectedIndex(index)
+
+        setPieceState([...pieceState])
     }
 
+
     return (
-        <div className="board">
+        <div><h1>{points}</h1>
+        <div className="Board">
             {pieceState.map((piece, index) => (
                 <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
             ))}
+        </div>
         </div>
     )
 }
