@@ -7,15 +7,10 @@ const Piece: React.FC<PieceProps> = ({
     onClick
 }) => {
     const Image = piece.image
-    const [isTurned, setIsTurned] = useState(piece.turned)
-        
-    useEffect(() => {
-        setIsTurned(piece.turned)
-    }, [piece.turned])
 
     return (
         <div className="piece" onClick={onClick}>
-            { isTurned
+            { piece.turned
                 ? <Image className="piece__front" /> 
                 : <div className="piece__front" />
             }
@@ -24,10 +19,3 @@ const Piece: React.FC<PieceProps> = ({
 }
 
 export default Piece
-
-/*
-
-useEffect(() => {
-    setIsTurned(piece.turned)
-}, [piece.turned])
-*/
