@@ -5,14 +5,52 @@
   background-size: 80px;
 }
 
+.piece_container {
+  position: relative;
+}
+
+.piece_container.turned {
+  animation: piece_flip_front_animation 500ms forwards;
+  transform-style: preserve-3d;
+}
+
+.piece_container.reverse {
+  animation: piece_flip_back_animation 500ms 1000ms forwards;
+  transform-style: preserve-3d;
+}
+
+.piece_container.scored {
+  animation: score_made_animation 500ms forwards;
+}
+
 .piece__front {
-    background-image: url('../../assets/front_card.png');
+  background-image: url('../../assets/front_card.png');
 }
 
 .piece__back {
-    background-image: url('../../assets/back_card.png');
+  background-image: url('../../assets/back_card.png');
+  
+  position: absolute;
+  top:0;
+
+  transform: rotate3d(0, 1, 0, 180deg);
 }
 
 .piece__invisible_piece {
   background-color: transparent;
+}
+
+@keyframes piece_flip_front_animation{
+  0% {transform: rotate3d(0, 1, 0, 180deg);}
+  100% {transform: rotate3d(0);}
+}
+
+@keyframes piece_flip_back_animation {
+  0% {transform: rotate3d(0);}
+  100% {transform: rotate3d(0, 1, 0, 180deg);}
+}
+
+@keyframes score_made_animation {
+  0% {transform: scale(1);}
+  100% {transform: scale(0);}
 }
