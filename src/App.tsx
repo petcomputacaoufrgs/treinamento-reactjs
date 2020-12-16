@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import { ReactComponent as Diplodocus } from './assets/001-diplodocus.svg'
 import { ReactComponent as Stegosaurus } from './assets/002-stegosaurus.svg'
@@ -10,35 +10,24 @@ import { ReactComponent as Stegosaurus3 } from './assets/007-stegosaurus.svg'
 import { ReactComponent as Diplodocus3 } from './assets/008-diplodocus-2.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
+import PieceService from './services/PieceService'
 
-
-function shuffle(array:BoardPiece[]) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
 
 const App: React.FC = () => {
-  const board = shuffle([
+  const board = [
     ...getPieces(),
     ...getPieces()
-  ])
+  ]
 
   const boardRandom = board.sort(() => Math.random() - 0.5)
-
+  
+  const serviceResponse = async () => {
+    const theBoard = await PieceService.getAllPieces()
+    console.log(theBoard)
+  }
+  
+  useEffect(() => {serviceResponse()}, [])
+  
   return (
     <div className="App">
       <header className="App-header">
