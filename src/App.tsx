@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
-import { ReactComponent as Orca } from './assets/001-orca.svg'
+import { ReactComponent as Diplodocus } from './assets/001-diplodocus.svg'
 import { ReactComponent as Stegosaurus } from './assets/002-stegosaurus.svg'
-import { ReactComponent as Dragao } from './assets/003-dragao.svg'
-import { ReactComponent as Hidra } from './assets/004-hidra.svg'
-import { ReactComponent as Coruja } from './assets/005-coruja.svg'
-import { ReactComponent as Lobo } from './assets/006-lobo.svg'
-import { ReactComponent as Gatinha } from './assets/007-gatinha.svg'
-import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
+import { ReactComponent as Dinosaur } from './assets/003-dinosaur.svg'
+import { ReactComponent as Triceratops } from './assets/004-triceratops.svg'
+import { ReactComponent as Diplodocus2 } from './assets/005-diplodocus-1.svg'
+import { ReactComponent as Stegosaurus2 } from './assets/006-stegosaurus-1.svg'
+import { ReactComponent as Stegosaurus3 } from './assets/007-stegosaurus.svg'
+import { ReactComponent as Diplodocus3 } from './assets/008-diplodocus-2.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
+import PieceService from './services/PieceService'
+
 
 const App: React.FC = () => {
   const board = [
@@ -17,21 +19,22 @@ const App: React.FC = () => {
     ...getPieces()
   ]
 
-  function shuffleArray<T>(array: T[]): T[] {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array
+  const boardRandom = board.sort(() => Math.random() - 0.5)
+  
+  const serviceResponse = async () => {
+    const theBoard = await PieceService.getAllPieces()
+    console.log(theBoard)
   }
-
+  
+  useEffect(() => {serviceResponse()}, [])
+  
   return (
     <div className="App">
       <header className="App-header">
         <h1>Joguinho da Memória</h1>
         <p>Jogo da memória para uma pessoa</p>
       </header>
-      <Board pieceList={shuffleArray(board)} />
+      <Board pieceList={boardRandom} />
     </div>
   );
 }
@@ -39,38 +42,47 @@ const App: React.FC = () => {
 const getPieces = (): BoardPiece[] => {
   return [
     {
-      image: Orca,
-      turned: false
+      image: Diplodocus,
+      turned: false,
+      visible: true
     },
     {
       image: Stegosaurus,
-      turned: false
+      turned: false,
+      visible: true
     },
     {
-      image: Dragao,
-      turned: false
+      image: Dinosaur,
+      turned: false,
+      visible: true
     },
     {
-      image: Hidra,
-      turned: false
+      image: Triceratops,
+      turned: false,
+      visible: true
     },
     {
-      image: Coruja,
-      turned: false
+      image: Diplodocus2,
+      turned: false,
+      visible: true
     },
     {
-      image: Lobo,
-      turned: false
+      image: Stegosaurus2,
+      turned: false,
+      visible: true
     },
     {
-      image: Gatinha,
-      turned: false
+      image: Stegosaurus3,
+      turned: false,
+      visible: true
     },
     {
-      image: Raposinha,
-      turned: false
+      image: Diplodocus3,
+      turned: false,
+      visible: true
     }
   ]
 }
 
 export default App
+

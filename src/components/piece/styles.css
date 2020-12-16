@@ -1,13 +1,18 @@
 .piece {
-  background-color: whitesmoke;
   height: 80px;
   width: 80px;
   border-radius: 3px;
-  background-image: url('../../assets/background.png');
-  background-size: 300px;
+  background-size: 80px;
 }
 
 .piece__front {
-    height: inherit;
-    width: inherit;
+    background-image: url('../../assets/front_card.png');
+}
+
+.piece__back {
+    background-image: url('../../assets/back_card.png');
+}
+
+.piece__invisible_piece {
+  background-color: transparent;
 }
