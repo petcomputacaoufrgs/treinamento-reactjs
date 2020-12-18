@@ -1,53 +1,48 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
-import BoardService from '../../services/board/BoardService'
-import BoardContextType from '../../types/BoardContextType'
-import BoardPiece from '../../types/BoardPiece'
-import BoardContextUpdater from '../updater/BoardContextUpdater'
+import React, { useContext, useEffect, useState } from "react"
+import BoardService from "../../services/board/BoardService"
+import { defaultContext } from "../../types/BoardContextType"
+import BoardPiece from "../../types/BoardPiece"
 
-const BoardContext = createContext({
-  items: [] as BoardPiece[],
-} as BoardContextType)
+const BoardContext = React.createContext(defaultContext)
 
-const BoardContextProvider: React.FC = (props) => {
-  const [items, setItems] = useState([] as BoardPiece[])
-  const [firstLoad, setFirstLoad] = useState(true)
+const BoardProvider: React.FC = ({
+    children
+}) => {
+    const [value, setValue] = useState(defaultContext)
+      
+    useEffect(() => {
+        const getData = async () => {
+            const serverData = await BoardService.getPieces()
+            if (serverData) {
+                const newData: Array<BoardPiece> = serverData.map((data) => ({
+                    id: data.id,
+                    image: data.value,
+                    turned: false,
+                    removed: false,
+                    name: data.name
+                }))
 
-  useEffect(() => {
-    const updateData = async () => {
-      const items = await BoardService.getPieces()
-      console.log(items)
-      setItems(items)
-    }
+                updateData(newData)
+            }
+        }
 
-    if (firstLoad) {
-      updateData()
-      setFirstLoad(false)
-    }
+        let updateData = (newData: Array<BoardPiece>) => {
+            setValue({
+                data: newData,
+                loading: false
+            })
+        }   
 
-    let handleLocalDataChanged = () => {
-      updateData()
-    }
+        getData()
+    }, [])
 
-    BoardContextUpdater.setCallback(handleLocalDataChanged)
-
-    const cleanBeforeUpdate = () => {
-      handleLocalDataChanged = () => {}
-    }
-
-    return cleanBeforeUpdate
-  }, [items, firstLoad])
-
-  const value = {
-    items: items,
-  }
-
-  return (
-    <BoardContext.Provider value={value}>
-      {props.children}
-    </BoardContext.Provider>
-  )
+    return (
+        <BoardContext.Provider value={value}>
+            {children}
+        </BoardContext.Provider>
+    )
 }
 
 export const useBoard = () => useContext(BoardContext)
 
-export default BoardContextProvider
+export default BoardProvider

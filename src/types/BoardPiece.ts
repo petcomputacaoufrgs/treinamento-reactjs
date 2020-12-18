@@ -1,6 +1,7 @@
 export default interface BoardPiece {
     id: number
-    image: JSX.Element
+    name:string
+    image: string
     turned: boolean 
     removed?: boolean
 }

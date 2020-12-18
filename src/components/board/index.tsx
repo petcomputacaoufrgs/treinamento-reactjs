@@ -1,18 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Piece from '../piece'
 import './styles.css'
-import BoardPiece from '../../types/BoardPiece'
+import BoardPiece from '../../types/BoardPiece';
 import { useBoard } from '../../context/provider/BoardContextProvider'
+import ArrayUtils from '../../utils/ArrayUtils'
 
 const BASE_ANIMATION_DELAY = 500
 
-const Board = () => {
-
-    const [pieceState, setPieceState] = useState(useBoard().items)
+const Board: React.FC = () => {
+    const boardContext = useBoard()
+  
+    const [boardState, setBoardState] = useState<Array<BoardPiece>>([])
     const [lastPieceIndex, setLastPieceIndex] = useState<number>(-1)
     const [score, setScore] = useState(0)
     const [blockClick, setBlockClick] = useState(false)
     const [correctAnswer, setCorrectAnswer] = useState<boolean | undefined>(undefined)
+
+    useEffect(() => {
+
+        const dataDeepCopy = JSON.parse(JSON.stringify(boardContext.data))
+
+        const board = [...boardContext.data, ...dataDeepCopy]
+        
+        const shuffledBoard = ArrayUtils.shuffleArray(board)
+
+        setBoardState(shuffledBoard)
+    }, [boardContext])
+
 
     const handleOnClick = (index: number) => {
         if (blockClick) {
@@ -30,7 +44,7 @@ const Board = () => {
             setLastPieceIndex(index)
         }
 
-        pieceState[index].turned = true
+        boardState[index].turned = true
         updatePieceState()
     }
 
@@ -40,8 +54,8 @@ const Board = () => {
     }
 
     const endEvaluatePlayersMove = (index: number, isCorrectPair: boolean) => { 
-        const currentPiece = pieceState[index]
-        const lastPiece = pieceState[lastPieceIndex]
+        const currentPiece = boardState[index]
+        const lastPiece = boardState[lastPieceIndex]
 
         if (isCorrectPair) {
             incrementScore()
@@ -57,7 +71,7 @@ const Board = () => {
     }
     
     const isCorrectPair = (index: number): boolean => (
-        pieceState[index].id === pieceState[lastPieceIndex].id
+        boardState[index].id === boardState[lastPieceIndex].id
     )
 
     const incrementScore = () => {
@@ -82,21 +96,27 @@ const Board = () => {
     }
 
     const updatePieceState = () => {
-        setPieceState([...pieceState])
+        setBoardState([...boardState])
     }
 
     return (
         <div className="board">
-            <div className="board__header"><p>{score}</p></div>
-            <div className="board__pieces">
-                {pieceState.map((piece, index) => (
-                    <Piece 
-                        piece={piece} 
-                        correctAnswer={correctAnswer}
-                        key={index} 
-                        onClick={() => handleOnClick(index)} />
-                ))}
-            </div>
+            {boardContext.loading ? 
+                <div>Carregando...</div>
+                :
+                <>
+                <div className="board__header"><p>{score}</p></div>
+                    <div className="board__pieces">
+                    {boardState.map((piece, index) => (
+                        <Piece 
+                            piece={piece} 
+                            correctAnswer={correctAnswer}
+                            key={index} 
+                            onClick={() => handleOnClick(index)} />
+                    ))}
+                </div>
+                </>
+            }
         </div>
     )
 }

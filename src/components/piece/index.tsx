@@ -27,6 +27,10 @@ const Piece: React.FC<PieceProps> = ({
         return baseClass
     } 
 
+    const buff = Buffer.from(piece.image)
+
+    const base64data = buff.toString('base64');
+
     return (
         <div className='piece'>
             {piece.removed ? 
@@ -34,7 +38,7 @@ const Piece: React.FC<PieceProps> = ({
                 : 
                 <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
                     <div className='piece__back'/>
-                    {piece.image} 
+                    <img alt={piece.name} className='piece__front' src={`data:image/svg+xml;base64,${base64data }`} />
                 </div>
             }
         </div>
