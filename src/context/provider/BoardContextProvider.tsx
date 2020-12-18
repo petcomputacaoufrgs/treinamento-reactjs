@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import BoardService from "../../services/board/BoardService"
 import { defaultContext } from "../../types/BoardContextType"
 import BoardPiece from "../../types/BoardPiece"
+import ArrayUtils from "../../utils/ArrayUtils"
 
 const BoardContext = React.createContext(defaultContext)
 
@@ -22,7 +23,11 @@ const BoardProvider: React.FC = ({
                     name: data.name
                 }))
 
-                updateData(newData)
+                const dataDeepCopy: BoardPiece[] = JSON.parse(JSON.stringify(newData))
+        
+                const shuffledBoard = ArrayUtils.shuffleArray([...newData, ...dataDeepCopy])
+
+                updateData(shuffledBoard)
             }
         }
 
