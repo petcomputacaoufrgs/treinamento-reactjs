@@ -7,7 +7,6 @@ const Piece: React.FC<PieceProps> = ({
     correctAnswer,
     onClick
 }) => {
-    const Image = piece.image
 
     const getPieceCardClass = (): string => {
         const baseClass = 'piece__card'
@@ -35,7 +34,7 @@ const Piece: React.FC<PieceProps> = ({
                 : 
                 <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
                     <div className='piece__back'/>
-                    <Image className='piece__front' /> 
+                    {piece.image} 
                 </div>
             }
         </div>

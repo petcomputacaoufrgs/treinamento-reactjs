@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import BoardProps from './props'
 import Piece from '../piece'
 import './styles.css'
-import BoardPiece from '../types/BoardPiece'
+import BoardPiece from '../../types/BoardPiece'
+import { useBoard } from '../../context/provider/BoardContextProvider'
 
 const BASE_ANIMATION_DELAY = 500
 
-const Board: React.FC<BoardProps> = ({
-    pieceList
-}) => {
-    const [pieceState, setPieceState] = useState(pieceList)
+const Board = () => {
+
+    const [pieceState, setPieceState] = useState(useBoard().items)
     const [lastPieceIndex, setLastPieceIndex] = useState<number>(-1)
     const [score, setScore] = useState(0)
     const [blockClick, setBlockClick] = useState(false)
