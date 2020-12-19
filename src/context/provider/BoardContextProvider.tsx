@@ -13,7 +13,7 @@ const BoardProvider: React.FC = ({
       
     useEffect(() => {
         const getData = async () => {
-            const serverData = await BoardService.getPieces()
+            const serverData = await BoardService.getAllPiecesFromServer()
             if (serverData) {
                 const newData: Array<BoardPiece> = serverData.map((data) => ({
                     id: data.id,
@@ -23,11 +23,7 @@ const BoardProvider: React.FC = ({
                     name: data.name
                 }))
 
-                const dataDeepCopy: BoardPiece[] = JSON.parse(JSON.stringify(newData))
-        
-                const shuffledBoard = ArrayUtils.shuffleArray([...newData, ...dataDeepCopy])
-
-                updateData(shuffledBoard)
+                updateData(BoardService.doubleAndShufflePieces(newData))
             }
         }
 

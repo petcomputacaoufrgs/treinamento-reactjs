@@ -50,7 +50,8 @@ const Board: React.FC = () => {
         board[index].turned = true
     }
 
-    const endEvaluatePlayersMove = (index: number, isCorrectPair: boolean) => { 
+    const endEvaluatePlayersMove = (index: number, isCorrectPair: boolean) => {
+
         const currentPiece = board[index]
         const lastPiece = board[lastPieceIndex]
 
@@ -78,20 +79,20 @@ const Board: React.FC = () => {
     return (
         <div className="board">
             {boardContext.loading ? 
-                <div>Carregando...</div>
-                :
-                <>
-                <div className="board__header"><p>{score}</p></div>
-                    <div className="board__pieces">
-                    {board.map((piece, index) => (
-                        <Piece 
-                            key={index} 
-                            piece={piece} 
-                            correctAnswer={correctAnswer}
-                            onClick={() => handleOnClick(index)} />
-                    ))}
-                </div>
-                </>
+					<div>Carregando...</div> :
+					<>
+						<div className="board__header"><p>{score}</p></div>
+						<div className="board__pieces">
+						{board.map((piece, index) => (
+							<Piece 
+								key={index} 
+								piece={piece} 
+								correctAnswer={correctAnswer}
+								onClick={() => handleOnClick(index)} 
+							/>
+						))}
+						</div>
+					</>
             }
         </div>
     )

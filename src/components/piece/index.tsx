@@ -16,14 +16,10 @@ const Piece: React.FC<PieceProps> = ({
                 if (correctAnswer) {
                     return baseClass + ' score'
                 }
-    
                 return baseClass + ' flip_back'
             }
-    
             return baseClass + ' flip'
         }
-        
-
         return baseClass
     } 
 
@@ -38,7 +34,7 @@ const Piece: React.FC<PieceProps> = ({
                 : 
                 <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
                     <div className='piece__back'/>
-                    <img alt={piece.name} className='piece__front' src={`data:image/svg+xml;base64,${base64data }`} />
+                    <img alt={piece.name} className='piece__front' src={`data:image/svg+xml;base64,${base64data}`} />
                 </div>
             }
         </div>
