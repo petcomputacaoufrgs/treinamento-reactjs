@@ -10,6 +10,7 @@ import { ReactComponent as Gatinha } from './assets/007-gatinha.svg'
 import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
+import PieceService from './services/PieceService'
 
 const App: React.FC = () => {
   const board = [
@@ -31,7 +32,9 @@ const App: React.FC = () => {
         <h1>Joguinho da Memória</h1>
         <h2>Jogo da memória para uma pessoa</h2>
       </header>
-      <Board pieceList={shuffleArray(board)} />
+      <div className="app__body">
+        <Board pieceList={shuffleArray(board)} />
+      </div>
     </div>
   );
 }

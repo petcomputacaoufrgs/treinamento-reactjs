@@ -1558,6 +1558,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/cookiejar@*":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.2.tgz#66ad9331f63fe8a3d3d9d8c6e3906dd10f6446e8"
+  integrity sha512-t73xJJrvdTjXrn4jLS9VSGRbz0nUY3cl2DMGDU48lKl+HR9dbbjW2A9r3g40VA++mQpy6uuHg33gy7du2BKpog==
+
 "@types/eslint@^7.2.0":
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-7.2.4.tgz#d12eeed7741d2491b69808576ac2d20c14f74c41"
@@ -1595,6 +1600,13 @@
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@types/html-minifier-terser/-/html-minifier-terser-5.1.1.tgz#3c9ee980f1a10d6021ae6632ca3e79ca2ec4fb50"
   integrity sha512-giAlZwstKbmvMk1OO7WXSj4OZ0keXAcl2TQq4LWHiiPH2ByaH7WeUzng+Qej8UPxxv+8lRTuouo0iaNDBuzIBA==
+
+"@types/http-status-codes@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/http-status-codes/-/http-status-codes-1.2.0.tgz#6e5244835aaf7164dd306f1d4d2dfdbb2159d909"
+  integrity sha512-vjpjevMaxtrtdrrV/TQNIFT7mKL8nvIKG7G/LjMDZdVvqRxRg5SNfGkeuSaowVc0rbK8xDA2d/Etunyb5GyzzA==
+  dependencies:
+    http-status-codes "*"
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.3"
@@ -1704,6 +1716,14 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.0.tgz#7036640b4e21cc2f259ae826ce843d277dad8cff"
   integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
+
+"@types/superagent@^4.1.10":
+  version "4.1.10"
+  resolved "https://registry.yarnpkg.com/@types/superagent/-/superagent-4.1.10.tgz#5e2cc721edf58f64fe9b819f326ee74803adee86"
+  integrity sha512-xAgkb2CMWUMCyVc/3+7iQfOEBE75NvuZeezvmixbUw3nmENf2tCnQkW5yQLTYqvXUQ+R6EXxdqKKbal2zM5V/g==
+  dependencies:
+    "@types/cookiejar" "*"
+    "@types/node" "*"
 
 "@types/tapable@*", "@types/tapable@^1.0.5":
   version "1.0.6"
@@ -5527,6 +5547,11 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+http-status-codes@*, http-status-codes@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-2.1.4.tgz#453d99b4bd9424254c4f6a9a3a03715923052798"
+  integrity sha512-MZVIsLKGVOVE1KEnldppe6Ij+vmemMuApDfjhVSLzyYP+td0bREEYyAoIw9yFePoBXManCuBqmiNP5FqJS5Xkg==
+
 https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
@@ -7134,7 +7159,7 @@ mime@1.6.0:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@^2.4.4:
+mime@^2.4.4, mime@^2.4.6:
   version "2.4.6"
   resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.6.tgz#e5b407c90db442f2beb5b162373d07b69affa4d1"
   integrity sha512-RZKhC3EmpBchfTGBVb8fb+RL2cWyw/32lshnsETttkBAyAUXSGHxbEJWWRXc751DrIxG1q04b8QwMbAwkRPpUA==
