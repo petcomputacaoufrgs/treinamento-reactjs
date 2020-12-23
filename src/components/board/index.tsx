@@ -15,7 +15,6 @@ const Board: React.FC<BoardProps> = ({
     const [blockClick, setBlockClick] = useState(false)
     const [correctAnswer, setCorrectAnswer] = useState<boolean | undefined>(undefined)
 
-<<<<<<< Updated upstream
     const handleOnClick = (index: number) => {
         if (blockClick) {
             return

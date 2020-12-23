@@ -1,9 +1,4 @@
 .board {
-<<<<<<< Updated upstream
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 12px;
-=======
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,5 +40,4 @@
   100% {
     transform: scale(0,0);
   }
->>>>>>> Stashed changes
 }

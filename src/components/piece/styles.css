@@ -1,20 +1,4 @@
 .piece {
-<<<<<<< Updated upstream
-  background-color: whitesmoke;
-  height: 80px;
-  width: 80px;
-  border-radius: 3px;
-  background-image: url('../../assets/background.png');
-  background-size: 20rem;
-  border-radius: 0.2rem;
-  height: inherit;
-  width: inherit;
-}
-
-.piece__front {
-    height: inherit;
-    width: inherit;
-=======
   height: 4.5rem;
   width: 4.5rem;
   overflow: hidden;
@@ -102,5 +86,4 @@
   100% {
     transform: rotate3d(0,0,0,0deg);
   }
->>>>>>> Stashed changes
 }
