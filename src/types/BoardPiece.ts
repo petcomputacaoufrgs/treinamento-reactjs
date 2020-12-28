@@ -1,6 +1,7 @@
 export default interface BoardPiece {
     id: number
-    image: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    name:string
+    image: string
     turned: boolean 
     removed?: boolean
 }

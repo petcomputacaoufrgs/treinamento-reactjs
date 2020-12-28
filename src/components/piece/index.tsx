@@ -7,7 +7,6 @@ const Piece: React.FC<PieceProps> = ({
     correctAnswer,
     onClick
 }) => {
-    const Image = piece.image
 
     const getPieceCardClass = (): string => {
         const baseClass = 'piece__card'
@@ -17,16 +16,16 @@ const Piece: React.FC<PieceProps> = ({
                 if (correctAnswer) {
                     return baseClass + ' score'
                 }
-    
                 return baseClass + ' flip_back'
             }
-    
             return baseClass + ' flip'
         }
-        
-
         return baseClass
     } 
+
+    const buff = Buffer.from(piece.image)
+
+    const base64data = buff.toString('base64');
 
     return (
         <div className='piece'>
@@ -35,7 +34,7 @@ const Piece: React.FC<PieceProps> = ({
                 : 
                 <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
                     <div className='piece__back'/>
-                    <Image className='piece__front' /> 
+                    <img alt={piece.name} className='piece__front' src={`data:image/svg+xml;base64,${base64data}`} />
                 </div>
             }
         </div>
