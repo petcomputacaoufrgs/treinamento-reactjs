@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import Board from './components/board'
-import BoardContextProvider from './context/provider/BoardContextProvider'
+import BoardContextProvider from './context/BoardContext'
 
 const App: React.FC = () => {
 
