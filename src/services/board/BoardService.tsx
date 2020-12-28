@@ -31,10 +31,10 @@ class BoardService {
   doubleAndShufflePieces = (data: BoardPiece[]) => {
 
     const dataDeepCopy: BoardPiece[] = JSON.parse(JSON.stringify(data))
-        
-    const shuffledBoard = ArrayUtils.shuffleArray([...data, ...dataDeepCopy])
 
-    return shuffledBoard
+    const board = [...data, ...dataDeepCopy]
+        
+    return board.sort(() => Math.random() - 0.5)
 
   }
 
