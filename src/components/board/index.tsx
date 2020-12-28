@@ -48,19 +48,19 @@ const Board: React.FC = () => {
         const currentPiece = board[index]
         const lastPiece = board[lastPieceIndex]
 
-        function cleanPlayersMove(a: BoardPiece, b: BoardPiece) {
-            a.turned = false
-            b.turned = false
+        function cleanPlayersMove() {
+            currentPiece.turned = false
+            lastPiece.turned = false
         }
-        function removePieces(a: BoardPiece, b: BoardPiece) {
-            a.removed = b.removed = true
+        function removePieces() {
+            currentPiece.removed = lastPiece.removed = true
         }
 
         if (isCorrectPair) {
             setScore(score + 1)
-            removePieces(currentPiece, lastPiece)
+            removePieces()
         } else {
-            cleanPlayersMove(currentPiece, lastPiece)
+            cleanPlayersMove()
         }
 
         setBlockClick(false)
