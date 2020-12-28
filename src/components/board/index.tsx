@@ -18,36 +18,29 @@ const Board: React.FC = () => {
 
     const handleOnClick = (index: number) => {
 
-        function isSecondPiece() {
-            return lastPieceIndex !== -1
-        }
-        function isCorrectPair() {
-            return board[index].id === board[lastPieceIndex].id
-        }
-        function startEvaluatePlayersMove() {
-            const correctPair = isCorrectPair()
-            setCorrectAnswer(correctPair)
-            setTimeout(() => endEvaluatePlayersMove(index, correctPair), BASE_ANIMATION_DELAY)
-        }
-        function isDoubleClickInSamePiece(index :number) {
-            return lastPieceIndex === index
-        }
-
         if (blockClick) {
             return
         }
 
-        if (isSecondPiece()) {
-            if (isDoubleClickInSamePiece(index)) {
-                return
-            }
+        const isSecondPiece = lastPieceIndex !== -1
+        const isNotDoubleClick = lastPieceIndex !== index
+
+        if(isSecondPiece && isNotDoubleClick) {
             setBlockClick(true)
-            setTimeout(() => startEvaluatePlayersMove(), BASE_ANIMATION_DELAY)
+            setTimeout(() => startEvaluatePlayersMove(index), BASE_ANIMATION_DELAY)
         } else {
             setLastPieceIndex(index)
         }
 
         board[index].turned = true
+    }
+
+    const startEvaluatePlayersMove = (index: number) => {
+        
+        const isCorrectPair = board[index].id === board[lastPieceIndex].id
+        setCorrectAnswer(isCorrectPair)
+
+        setTimeout(() => endEvaluatePlayersMove(index, isCorrectPair), BASE_ANIMATION_DELAY)       
     }
 
     const endEvaluatePlayersMove = (index: number, isCorrectPair: boolean) => {

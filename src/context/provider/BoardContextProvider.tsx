@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import BoardService from "../../services/board/BoardService"
 import { defaultContext } from "../../types/BoardContextType"
 import BoardPiece from "../../types/BoardPiece"
-import ArrayUtils from "../../utils/ArrayUtils"
 
 const BoardContext = React.createContext(defaultContext)
 
