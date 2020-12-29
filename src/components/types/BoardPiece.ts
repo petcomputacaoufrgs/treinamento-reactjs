@@ -1,5 +1,5 @@
 export default interface BoardPiece {
-    image: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
+    image: () => JSX.Element
     turned: boolean 
     visible: boolean
 }

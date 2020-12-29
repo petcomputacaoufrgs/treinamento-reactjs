@@ -22,6 +22,9 @@ const Board: React.FC<BoardProps> = ({
         document.title = "Pontos: " + score
     }, [score])
     
+    useEffect(() => {
+        setPieceState(pieceList)
+    }, [pieceList])
 
     const handleOnClick = async(index: number) => {
         if(!pieceState[index].turned && !blocked) {
