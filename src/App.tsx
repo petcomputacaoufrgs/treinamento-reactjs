@@ -11,6 +11,7 @@ import { ReactComponent as Raposinha } from './assets/008-raposinha.svg'
 import Board from './components/board'
 import BoardPiece from './components/types/BoardPiece'
 
+
 const App: React.FC = () => {
   const board = [
     ...getPieces(),
@@ -25,9 +26,16 @@ const App: React.FC = () => {
     return array
   }
 
+  async function requestTest() {
+    fetch(`http://treinamento-reactjs-api.herokuapp.com/svg/all`).then(response => response.json()).then(data => console.log(data));
+  }
+
+  requestTest();
+
   return (
     <div className="App">
       <header className="App-header">
+
         <h1>Joguinho da Memória</h1>
         <p>Jogo da memória para uma pessoa</p>
       </header>
