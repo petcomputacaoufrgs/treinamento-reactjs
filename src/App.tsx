@@ -1,20 +1,19 @@
 import React from 'react'
 import './App.css'
 import Board from './components/board'
-import { usePieces } from './context/provider/piece'
+import BoardContextProvider from './context/BoardContext'
 
+const App: React.FC = () => {
 
-const App: React.FC = () => {  
-  const board = usePieces()
-  const boardRandom = board.data.sort(() => Math.random() - 0.5)
- 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app__header">
         <h1>Joguinho da Memória</h1>
-        <p>Jogo da memória para uma pessoa</p>
+        <h2>Jogo da memória para uma pessoa</h2>
       </header>
-      <Board pieceList={boardRandom} />
+      <BoardContextProvider>
+        <Board />
+      </BoardContextProvider>
     </div>
   );
 }

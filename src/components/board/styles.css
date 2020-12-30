@@ -1,5 +1,43 @@
 .board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 0 1rem;
+}
+
+.board__pieces {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 0.7rem;
+}
+
+.board__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4F7302;
+  border-radius: 50%;
+  padding: 0.3rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.board__header h2 {
+  margin: 0;
+}
+
+.board__header.scored h2 {
+  animation-name: board__score;
+  animation-duration: 500ms;
+}
+
+@keyframes board__score {
+  0% {
+    transform: scale(1,1);
+  }
+  100% {
+    transform: scale(0,0);
+  }
 }

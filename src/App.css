@@ -7,11 +7,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #BF7636;
 }
 
-.Board {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 12px;
+.app__header h1 {
+  font-size: 1.5rem;
+}
+
+.app__header h2 {
+  font-size: 1.2rem;
 }

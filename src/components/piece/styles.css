@@ -36,8 +36,6 @@
   transform: rotate3d(0, 1, 0, 180deg);
 }
 
-.piece__invisible_piece {
-  background-color: transparent;
 }
 
 @keyframes piece_flip_front_animation{
@@ -53,4 +51,24 @@
 @keyframes score_made_animation {
   0% {transform: scale(1);}
   100% {transform: scale(0);}
+}
+.piece__removed {
+  background-color: transparent;
+  background-image: none;
+  height: inherit;
+  width: inherit;
+}
+.piece__card {
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+.piece__card svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }

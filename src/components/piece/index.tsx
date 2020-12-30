@@ -4,27 +4,39 @@ import './styles.css'
 
 const Piece: React.FC<PieceProps> = ({
     piece,
-    onClick,
-    turned: turnedBack,
-    visible
+    correctAnswer,
+    onClick
 }) => {
-    const Image = piece.image
-    
-    const renderPiece = (turned:boolean) => (
-        <div className={turned? (turnedBack? "piece_container reverse" : (visible? "piece_container turned" : "piece_container scored")) : "piece_container"}>
-            <Image />
-            <div className="piece piece__back" />
-        </div>
-    )
+
+    const getPieceCardClass = (): string => {
+        const baseClass = 'piece__card'
+
+        if (piece.turned) {
+            if (correctAnswer !== undefined) {
+                if (correctAnswer) {
+                    return baseClass + ' score'
+                }
+                return baseClass + ' flip_back'
+            }
+            return baseClass + ' flip'
+        }
+        return baseClass
+    } 
+
+    const buff = Buffer.from(piece.image)
+
+    const base64data = buff.toString('base64');
 
     return (
-        <div className="piece" onClick={onClick}>
-        { piece.turned && piece.visible
-            ? renderPiece(piece.turned) 
-            : piece.visible
-                ? renderPiece(piece.turned)
-                : <div className="piece__invisible_piece" />
-        }
+        <div className='piece'>
+            {piece.removed ? 
+                <div className='piece__removed'/>
+                : 
+                <div className={getPieceCardClass()} onClick={piece.removed ? () => {} : onClick}>
+                    <div className='piece__back'/>
+                    <img alt={piece.name} className='piece__front' src={`data:image/svg+xml;base64,${base64data}`} />
+                </div>
+            }
         </div>
     )
 }
