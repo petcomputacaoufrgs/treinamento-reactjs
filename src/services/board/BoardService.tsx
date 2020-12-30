@@ -2,7 +2,6 @@ import superagent from 'superagent'
 import httpStatusCode from 'http-status-codes'
 import BoardPieceAPI from '../../types/BoardPieceAPI'
 import BoardPiece from '../../types/BoardPiece'
-import ArrayUtils from '../../utils/ArrayUtils'
 import APIConstants from '../../constants/APIConstants'
 
 class BoardService {
