@@ -6,7 +6,7 @@ import BoardContextProvider from './context/BoardContext'
 const App: React.FC = () => {
 
   return (
-    <div className="app">
+    <div className="App">
       <header className="app__header">
         <h1>Joguinho da Memória</h1>
         <h2>Jogo da memória para uma pessoa</h2>
