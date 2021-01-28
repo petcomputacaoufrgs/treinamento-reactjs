@@ -1,5 +1,5 @@
-.app {
-  background-color: #282c34;
+.App {
+  background-color: #9ACAE7;
   text-align: center;
   height: 100vh;
   display: flex;
@@ -7,7 +7,13 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #BF7636;
+  color: white;
+}
+
+.Board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 12px;
 }
 
 .app__header h1 {

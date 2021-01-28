@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Piece from '../piece'
 import './styles.css'
-import BoardPiece from '../../types/BoardPiece';
 import { useBoard } from '../../context/BoardContext'
 
 const BASE_ANIMATION_DELAY = 500

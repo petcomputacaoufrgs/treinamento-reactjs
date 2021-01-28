@@ -7,15 +7,15 @@
 
 .piece__back {
   background-image: url('../../assets/piece_back.svg');
-  background-color: #592202;
+  background-color: #805a46;
   background-size: cover;
   height: inherit;
   width: inherit;
 }
 
 .piece__front {
-  background-color: #BF7636;
-  
+  background-image: url('../../assets/front_card.png');
+  background-size: inherit;
 }
 
 .piece__removed {
@@ -61,27 +61,27 @@
 
 @keyframes piece_board__score {
   0% {
-    transform: scale(1,1) rotate3d(0,1,0,180deg);
+    transform: scale(1, 1) rotate3d(0, 1, 0, 180deg);
   }
   100% {
-    transform: scale(0,0) rotate3d(5,1,0,180deg);
+    transform: scale(0, 0) rotate3d(5, 1, 0, 180deg);
   }
 }
 
 @keyframes piece__flip {
   0%   {
-    transform: rotate3d(0,0,0,0deg);
+    transform: rotate3d(0, 0, 0, 0);
   }
   100% {
-    transform: rotate3d(0,1,0,180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
   }
 }
 
 @keyframes piece__flip_back {
   0%   {
-    transform: rotate3d(0,1,0,180deg);
+    transform: rotate3d(0, 1, 0, 180deg);
   }
   100% {
-    transform: rotate3d(0,0,0,0deg);
+    transform: rotate3d(0, 0, 0, 0);
   }
 }

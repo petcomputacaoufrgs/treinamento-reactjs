@@ -2,11 +2,10 @@ import superagent from 'superagent'
 import { StatusCodes } from 'http-status-codes'
 
 class PieceService {
-    async getAllPieces(): Promise<any | undefined> {
-        const resposta = await superagent.get('https://treinamento-reactjs-api.herokuapp.com/svg/all')
-        if (resposta.status === StatusCodes.OK) {
-            return resposta.body
-        }
+    async getAllPieces(): Promise < any | undefined> {
+        const answer = await superagent.get('https://treinamento-reactjs-api.herokuapp.com/svg/all')
+
+        return answer.status === StatusCodes.OK? answer.body : undefined
     }
 }
 
