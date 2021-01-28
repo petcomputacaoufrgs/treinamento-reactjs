@@ -15,40 +15,50 @@ const Board: React.FC<BoardProps> = ({
     const [turnedPieceIndex, setTurnedPieceIndex] = useState<number>(-1)
     const [blocked, setBlocked] = useState<boolean>(false)
     const [score, setScore] = useState(0)
+    const [turnBack, setTurnBack] = useState<boolean>(false)
+    const [visibility, setVisibility] = useState(true)
 
     useEffect(() => {
         document.title = "Pontos: " + score
     }, [score])
     
+    useEffect(() => {
+        setPieceState(pieceList)
+    }, [pieceList])
+
     const handleOnClick = async(index: number) => {
         if(!pieceState[index].turned && !blocked) {
             pieceState[index].turned = true
 
             if(turnedPieceIndex === -1) {
                 setTurnedPieceIndex(index)
+
             } else {
+                setPieceState([...pieceState])
+                setBlocked(true)
+                
+                await sleep(500)
+
                 if (pieceState[turnedPieceIndex].image === pieceState[index].image) {
                     setScore(score + 1)
-
-                    console.log(score)
-
-                    setBlocked(true)
+                    
+                    setVisibility(false)
 
                     await sleep(1500)
 
                     setBlocked(false)
+                    setVisibility(true)
 
                     pieceState[turnedPieceIndex].visible = false
                     pieceState[index].visible = false
 
                 } else {
-                    setPieceState([...pieceState])
-                    
-                    setBlocked(true)
+                    setTurnBack(true)
 
                     await sleep(1500)
 
                     setBlocked(false)
+                    setTurnBack(false)
 
                     // desvirar as peças
                     pieceState[index].turned = false
@@ -65,7 +75,7 @@ const Board: React.FC<BoardProps> = ({
     return (
         <div className="board">
             {pieceState.map((piece, index) => (
-                <Piece piece={piece} key={index} onClick={() => handleOnClick(index)} />
+                <Piece piece={piece} key={index} turned={turnBack} visible={visibility} onClick={() => handleOnClick(index)} />
             ))}
         </div>
     )
